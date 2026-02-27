@@ -1,0 +1,46 @@
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px 4px 8px;
+  border-radius: 2px; /* Matching your form-input and button radius */
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  width: fit-content;
+  border: 1px solid transparent;
+  transition: all var(--transition-fast);
+}
+
+/* Published State - Using HG Success Green */
+.status-pill.is-published {
+  /* Using your success variable with a 10% opacity background */
+  background-color: color-mix(in srgb, var(--color-success), transparent 90%);
+  color: var(--color-success);
+  border-color: color-mix(in srgb, var(--color-success), transparent 80%);
+}
+
+/* Draft State - Using HG Muted Grays */
+.status-pill.is-draft {
+  background-color: var(--color-bg-input);
+  color: var(--color-text-muted);
+  border-color: var(--color-border);
+}
+
+.pill-icon {
+  display: flex;
+  align-items: center;
+  /* Icons look elegant when slightly more subtle than the text */
+  opacity: 0.7;
+}
+
+.pill-text {
+  line-height: 1;
+}
+
+/* The hover effect now uses your theme's brightness/contrast logic */
+.status-pill:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}

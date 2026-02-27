@@ -1,0 +1,110 @@
+/* The dimming effect behind the modal */
+.dialog-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--color-overlay); /* 0.85 opacity black/gray from your theme */
+  backdrop-filter: blur(8px); /* Increased blur for a more premium studio feel */
+  z-index: 1000;
+  animation: overlayShow var(--transition-base) cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* The Modal Box */
+.media-modal-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 95vw;
+  max-width: var(--max-width);
+  height: 85vh;
+  background-color: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: 4px; /* Matches your 2px/sharp design system better than 16px */
+  box-shadow: var(--shadow-elevated);
+  z-index: 1001;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: contentShow var(--transition-base) cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal-header {
+  padding: var(--space-md) var(--space-lg);
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--color-bg-elevated);
+}
+
+.modal-title-group {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.modal-icon-wrapper {
+  width: 40px;
+  height: 40px;
+  background: var(--color-bg-input);
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-accent); /* Icon pops in your gold accent */
+}
+
+.modal-title {
+  font-family: var(--font-display);
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--color-text);
+}
+
+.modal-description {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.02em;
+}
+
+.modal-body {
+  flex: 1;
+  overflow-y: auto;
+  background: var(--color-bg); /* Body is slightly darker than the header */
+}
+
+.modal-close-btn {
+  background: transparent;
+  border: none;
+  color: var(--color-text-subtle);
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 2px;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+}
+
+.modal-close-btn:hover {
+  background-color: var(--color-bg-input);
+  color: var(--color-error); /* Close button hints at exit/destructive action */
+}
+
+/* Animations using your design system timing */
+@keyframes overlayShow {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes contentShow {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -48%) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}

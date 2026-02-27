@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# Run artisan commands in the app container.
+# Usage:
+#   ./bin/artisan migrate
+#   ./bin/artisan make:model Photo -m
+#   ./bin/artisan tinker
+
+docker compose exec app php artisan "$@"

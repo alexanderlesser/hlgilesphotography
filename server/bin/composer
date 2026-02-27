@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# Run composer commands in the app container.
+# Usage:
+#   ./bin/composer install
+#   ./bin/composer require some/package
+
+docker compose exec app composer "$@"

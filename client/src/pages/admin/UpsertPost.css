@@ -1,0 +1,47 @@
+.upsert-root {
+  min-height: calc(100vh - var(--nav-height));
+  background-color: var(--color-bg);
+  display: flex;
+  flex-direction: column;
+}
+
+.editor-container {
+  flex: 1;
+  max-width: var(--max-width);
+  width: 100%;
+  margin: 0 auto;
+  padding: var(--space-2xl) var(--space-lg);
+  animation: fadeIn 0.4s ease-out;
+}
+
+/* Ensure the preview looks like a centered document */
+.editor-container:has(.post-preview-container) {
+  max-width: 100%; /* Let the Preview internal max-width handle it */
+  padding: 0;
+}
+
+/* Loading Spinner for the Save Button (Small utility) */
+.spinner-sm {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Tablet responsiveness */
+@media (max-width: 1024px) {
+  .editor-container {
+    padding: var(--space-xl) var(--space-md);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

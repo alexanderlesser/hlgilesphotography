@@ -1,0 +1,18 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor directories and files
+.idea
+.vscode
+*.swp
+*.swo
+*~
+
+# Node
+node_modules
+
+# Env files (sub-projects have their own .env.example)
+.env
+.env.*
+!.env.example

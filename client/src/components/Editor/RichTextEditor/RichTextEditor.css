@@ -1,0 +1,59 @@
+.rich-text-wrapper {
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+/* Toolbar Styling */
+.rich-text-wrapper .ql-toolbar.ql-snow {
+  background: var(--color-bg-input);
+  border: none;
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--space-sm);
+}
+
+/* Toolbar Icons & Text */
+.rich-text-wrapper .ql-snow .ql-stroke {
+  stroke: var(--color-text-muted);
+}
+
+.rich-text-wrapper .ql-snow .ql-fill {
+  fill: var(--color-text-muted);
+}
+
+.rich-text-wrapper .ql-snow .ql-picker {
+  color: var(--color-text-muted);
+}
+
+.rich-text-wrapper .ql-snow.ql-toolbar button:hover .ql-stroke,
+.rich-text-wrapper .ql-snow.ql-toolbar button.ql-active .ql-stroke {
+  stroke: var(--color-accent) !important;
+}
+
+/* Editor Container */
+.rich-text-wrapper .ql-container.ql-snow {
+  border: none;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-text);
+  min-height: 450px;
+}
+
+/* Content Area */
+.rich-text-wrapper .ql-editor {
+  line-height: 1.8;
+  padding: var(--space-lg);
+}
+
+.rich-text-wrapper .ql-editor.ql-blank::before {
+  color: var(--color-text-subtle);
+  font-style: normal;
+  left: var(--space-lg);
+}
+
+/* Links in Editor */
+.rich-text-wrapper .ql-snow .ql-editor a {
+  color: var(--color-accent);
+  text-decoration: underline;
+}

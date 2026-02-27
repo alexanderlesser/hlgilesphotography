@@ -1,0 +1,151 @@
+.admin-navbar {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--nav-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-lg);
+  z-index: 1000;
+  background: var(--color-bg-elevated);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.admin-nav__left, .admin-nav__right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xl);
+  flex: 1;
+}
+
+.admin-nav__right {
+  justify-content: flex-end;
+}
+
+/* Brand */
+.admin-nav__logo {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.logo-accent {
+  color: var(--color-accent);
+  font-size: 0.7em;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-left: 4px;
+}
+
+/* Links (Public Style) */
+.admin-nav__links {
+  display: flex;
+  gap: var(--space-md);
+}
+
+.admin-nav__link {
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  transition: color var(--transition-fast);
+}
+
+.admin-nav__link:hover, .admin-nav__link.active {
+  color: var(--color-accent);
+}
+
+.admin-nav__link.secondary {
+  opacity: 0.6;
+}
+
+/* Theme Toggle Styling (Copied from public Navbar) */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text-muted);
+}
+
+.theme-toggle__track {
+  position: relative;
+  width: 36px;
+  height: 20px;
+  background: var(--color-bg-input);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+}
+
+.theme-toggle__thumb {
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  transition: transform var(--transition-fast);
+}
+
+[data-theme="light"] .theme-toggle__thumb {
+  transform: translateX(16px);
+}
+
+/* Actions Wrapper */
+.admin-nav__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.nav-divider {
+  width: 1px;
+  height: 24px;
+  background: var(--color-border);
+  margin: 0 var(--space-xs);
+}
+
+/* Standard Dashboard Buttons (Consistent with Dashboard.css) */
+.btn-primary, .btn-secondary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.5rem 1rem;
+  border-radius: 2px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-primary { 
+  background: var(--color-accent); 
+  color: var(--color-bg); 
+  border: 1px solid var(--color-accent); 
+}
+
+.btn-secondary { 
+  background: transparent; 
+  color: var(--color-text); 
+  border: 1px solid var(--color-border); 
+}
+
+.btn-icon-logout {
+  background: transparent;
+  border: none;
+  color: var(--color-text-subtle);
+  padding: 4px;
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+
+.btn-icon-logout:hover { color: var(--color-error); }

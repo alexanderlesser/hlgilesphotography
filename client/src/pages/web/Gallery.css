@@ -1,0 +1,33 @@
+/* ===== GALLERY ===== */
+.gallery-grid {
+  columns: 3;
+  column-gap: var(--space-sm);
+}
+
+.gallery-grid__item {
+  break-inside: avoid;
+  margin-bottom: var(--space-sm);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+.gallery-grid__item img {
+  width: 100%;
+  display: block;
+  transition: transform var(--transition-slow), filter var(--transition-base);
+}
+
+.gallery-grid__item:hover img {
+  transform: scale(1.03);
+  filter: brightness(0.85);
+}
+
+@media (max-width: 1024px) {
+  .gallery-grid { columns: 2; }
+}
+
+@media (max-width: 600px) {
+  .gallery-grid { columns: 1; }
+}

@@ -1,0 +1,121 @@
+.table-container {
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: 4px; /* Slightly sharper to match your design system */
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+
+.studio-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  font-family: var(--font-body);
+}
+
+/* Header Styles */
+.studio-table th {
+  background: var(--color-bg-card);
+  padding: 1rem 1.25rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Row & Cell Styles */
+.studio-table td {
+  padding: 1.1rem 1.25rem;
+  border-bottom: 1px solid var(--color-border-light);
+  vertical-align: middle;
+  color: var(--color-text);
+  transition: color var(--transition-fast);
+}
+
+.table-row-trigger {
+  cursor: pointer;
+  transition: background var(--transition-fast) ease;
+}
+
+.table-row-trigger:hover {
+  background-color: var(--color-bg-input);
+}
+
+.table-row-trigger:hover td {
+  color: var(--color-accent); /* Subtle highlight of the whole row text on hover */
+}
+
+.title-cell {
+  display: flex;
+  flex-direction: column;
+}
+
+.date-cell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-muted);
+}
+
+/* Column Specifics */
+.col-id {
+  width: 60px;
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--color-text-subtle);
+}
+
+.col-title {
+  min-width: 300px;
+}
+
+.font-medium {
+  font-weight: 500;
+  /* Keeps titles strong in both themes */
+  color: var(--color-text); 
+}
+
+.text-muted {
+  color: var(--color-text-muted);
+}
+
+.text-right {
+  text-align: right;
+}
+
+/* Action Hint Logic */
+.action-hint {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.hint-text {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-accent);
+  opacity: 0;
+  transition: opacity var(--transition-fast) ease;
+}
+
+.table-row-trigger:hover .hint-text {
+  opacity: 1;
+}
+
+/* Empty State */
+.empty-table-state {
+  padding: var(--space-3xl);
+  text-align: center;
+  background: var(--color-bg-card);
+  border: 1px dashed var(--color-border);
+  border-radius: 4px;
+  color: var(--color-text-muted);
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+}
