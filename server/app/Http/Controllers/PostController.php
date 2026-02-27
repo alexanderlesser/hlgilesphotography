@@ -12,12 +12,13 @@ class PostController extends Controller
     /**
      * Display a paginated list of published posts.
      */
-    public function index(): AnonymousResourceCollection
+    public function index(Request $request): AnonymousResourceCollection
     {
+        $perPage = $request->query('per_page', 10);
+
         $posts = Post::where('published', true)
-            ->with('creator') // Eager load the photographer's name
             ->latest()
-            ->Paginate(6);
+            ->Paginate($perPage);
 
         // This handles the pagination structure automatically
         return PostResource::collection($posts);
@@ -34,6 +35,6 @@ class PostController extends Controller
         }
 
         // Load 'images' so the public gallery can display the slider/grid
-        return new PostResource($post->load(['images', 'creator']));
+        return new PostResource($post->load('images'));
     }
 }

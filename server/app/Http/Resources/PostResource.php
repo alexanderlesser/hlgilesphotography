@@ -20,11 +20,11 @@ class PostResource extends JsonResource
             'created_at' => $this->created_at->format('Y-m-d H:i'),
             'updated_at' => $this->updated_at->format('Y-m-d H:i'),
             
-            // Nested Relationships
-            'author' => [
-                'id' => $this->creator?->id,
-                'name' => $this->creator?->name,
-            ],
+            // Nested Relationships (only included when creator is eager-loaded)
+            'author' => $this->whenLoaded('creator', fn () => [
+                'id' => $this->creator->id,
+                'name' => $this->creator->name,
+            ]),
             
             // Only includes images if $post->load('images') was called
             'images' => ImageResource::collection($this->whenLoaded('images')),

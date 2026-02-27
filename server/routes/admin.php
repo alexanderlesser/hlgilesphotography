@@ -24,8 +24,8 @@ Route::prefix('admin')->group(function () {
             Route::get('/{post}', [AdminPostController::class, 'show']); // GET /api/admin/posts/{id}
 
             Route::post('', [AdminPostController::class, 'store']);
-            // Route::put('/{post}', [AdminPostController::class, 'update']);
-            // Route::delete('/{post}', [AdminPostController::class, 'destroy']);
+            Route::put('/{post}', [AdminPostController::class, 'update']);
+            Route::delete('/{post}', [AdminPostController::class, 'destroy']);
         });
 
         Route::prefix('images')->group(function () {
