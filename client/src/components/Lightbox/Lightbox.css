@@ -65,3 +65,24 @@
 .lightbox__nav--next {
   right: var(--space-lg);
 }
+
+@media (max-width: 768px) {
+  .lightbox__image {
+    max-width: 100vw;
+    max-height: 80vh;
+  }
+  .lightbox__nav {
+    width: 36px;
+    height: 36px;
+    font-size: 1.4rem;
+  }
+  .lightbox__nav--prev { left: var(--space-xs, 4px); }
+  .lightbox__nav--next { right: var(--space-xs, 4px); }
+  .lightbox__close {
+    top: var(--space-sm, 8px);
+    right: var(--space-sm, 8px);
+    width: 36px;
+    height: 36px;
+    font-size: 1.2rem;
+  }
+}
