@@ -54,16 +54,18 @@
   transition: background var(--transition-fast);
 }
 
-.lightbox__nav:hover {
-  background: rgba(255,255,255,0.15);
-}
-
 .lightbox__nav--prev {
   left: var(--space-lg);
 }
 
 .lightbox__nav--next {
   right: var(--space-lg);
+}
+
+@media (min-width: 769px) {
+  .lightbox__nav:hover {
+    background: rgba(255,255,255,0.15);
+  }
 }
 
 @media (max-width: 768px) {

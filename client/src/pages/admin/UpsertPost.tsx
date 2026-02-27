@@ -30,6 +30,7 @@ const UpsertPost = () => {
     excerpt: '',
     body: '',
     coverImage: '',
+    published: false,
     sliderImages: [] as PostImage[],
   });
 
@@ -42,14 +43,15 @@ const UpsertPost = () => {
         setIsLoading(true);
         const response = await adminApi.getPost(parseInt(id));
         console.log('one post: ', response)
-        const post = response.data.data; // Unpacking PostResource
+        const post = response.data.data;
 
         setFormData({
           title: post.title,
           excerpt: post.excerpt || '',
           body: post.body,
           coverImage: post.banner || '', // Using the Storage URL from Resource
-          sliderImages: post.images || [],   // Laravel relationship data
+          published: post.published || false,
+          sliderImages: post.images || [],
         });
       } catch (err) {
         console.error("Could not load post:", err);

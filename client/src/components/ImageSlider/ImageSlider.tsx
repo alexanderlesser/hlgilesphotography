@@ -19,6 +19,31 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
 }) => {
   const [current, setCurrent] = useState(0);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    if (Math.abs(distance) < minSwipeDistance) return;
+    if (distance > 0 && current < images.length - 1) {
+      setCurrent(c => c + 1);
+    } else if (distance < 0 && current > 0) {
+      setCurrent(c => c - 1);
+    }
+    setTouchStart(null);
+    setTouchEnd(null);
+  };
 
   const prev = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -71,6 +96,9 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
           className="image-slider__viewport" 
           onClick={() => setIsLightboxOpen(true)}
           style={{ cursor: 'zoom-in' }}
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
         >
           <img
             src={images[current].url}

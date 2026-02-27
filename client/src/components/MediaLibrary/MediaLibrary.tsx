@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Loader2, Search, ImageOff, Check, X, Trash2, Info } from 'lucide-react';
 import ImageUpload from './ImageUpload';
-import { adminApi, type PostImage } from '../../api/admin';
+import { adminApi} from '../../api/admin';
 import './MediaLibrary.css';
+import type { PostImage } from '../../api/types';
 
 interface MediaLibraryProps {
   onSelect?: (image: PostImage | PostImage[]) => void;

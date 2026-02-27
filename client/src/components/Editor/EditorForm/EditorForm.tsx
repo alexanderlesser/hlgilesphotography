@@ -4,13 +4,15 @@ import 'react-quill-new/dist/quill.snow.css';
 import { ImagePlus, X } from 'lucide-react';
 import './EditorForm.css';
 import ImageSlider from '../../ImageSlider';
-import type { PostImage } from '../../../api/admin';
+import type { PostImage } from '../../../api/types';
+import StatusPill from '../../Dashboard/StatusPill';
 
 interface FormData {
   title: string;
   excerpt: string;
   body: string;
   coverImage: string;
+  published: boolean;
   sliderImages: PostImage[];
 }
 
@@ -39,6 +41,7 @@ const EditorForm: React.FC<EditorFormProps> = ({ data, onChange, onOpenMedia }) 
 
   return (
     <div className="editor-form animate-fade-in-up">
+      <StatusPill published={data.published} />
       {/* Title */}
       <div className="editor-form__group">
         <input

@@ -1,4 +1,4 @@
-import { useEffect, useCallback } from 'react';
+import { useEffect, useCallback, useState } from 'react';
 import './Lightbox.css';
 
 interface LightboxProps {
@@ -10,6 +10,33 @@ interface LightboxProps {
 
 export default function Lightbox({ images, currentIndex, onClose, onNavigate }: LightboxProps) {
   const current = images[currentIndex];
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    if (Math.abs(distance) >= minSwipeDistance) {
+      if (distance > 0 && currentIndex < images.length - 1) {
+        onNavigate(currentIndex + 1);
+      } else if (distance < 0 && currentIndex > 0) {
+        onNavigate(currentIndex - 1);
+      }
+    }
+    setTouchStart(null);
+    setTouchEnd(null);
+  };
 
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
@@ -45,7 +72,11 @@ export default function Lightbox({ images, currentIndex, onClose, onNavigate }: 
         src={current.src}
         alt={current.title || 'Photo'}
         onClick={(e) => e.stopPropagation()}
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
       />
+
       {currentIndex < images.length - 1 && (
         <button
           className="lightbox__nav lightbox__nav--next"

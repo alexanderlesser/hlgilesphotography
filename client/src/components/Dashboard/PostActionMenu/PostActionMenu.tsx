@@ -21,7 +21,7 @@ interface PostActionMenuProps {
 
 const PostActionMenu = ({ children, postId, published }: PostActionMenuProps) => {
   const navigate = useNavigate();
-  const { getPosts, pagination } = useAdminDashboard();
+  const { getPosts, pagination, notify } = useAdminDashboard();
 
   // Helper to refresh the current page of the dashboard
   const refreshDashboard = () => {
@@ -35,9 +35,13 @@ const PostActionMenu = ({ children, postId, published }: PostActionMenuProps) =>
 
   const handleToggleStatus = async () => {
     try {
-      // Using updatePost from adminApi
-      // Note: We only send the field we want to change
-      await adminApi.updatePost(postId, { published: !published } as any);
+      const newPublishState = !published;
+      await adminApi.updatePost(postId, { published: newPublishState } as any);
+      notify(
+          "Post updated", 
+          "success", 
+          `post has been ${newPublishState ? 'published' : 'unpublished'}`
+        );
       refreshDashboard();
     } catch (err) {
       console.error("Failed to toggle status:", err);
@@ -49,6 +53,11 @@ const PostActionMenu = ({ children, postId, published }: PostActionMenuProps) =>
     if (window.confirm("Are you sure you want to delete this post? This action cannot be undone.")) {
       try {
         await adminApi.deletePost(postId);
+        notify(
+          "Post deleted", 
+          "success", 
+          'Post has been deleted'
+        );
         refreshDashboard();
       } catch (err) {
         console.error("Failed to delete post:", err);

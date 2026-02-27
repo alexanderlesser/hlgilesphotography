@@ -1,7 +1,7 @@
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { webApi } from '../../api/web';
-import type { Post, PostImage } from '../../api/types'; // Ensure PostImage is imported
+import type { Post} from '../../api/types';
 import ImageSlider from '../../components/ImageSlider';
 import './BlogPostPage.css';
 
@@ -66,9 +66,6 @@ export default function BlogPostPage() {
 
       {post.images && post.images.length > 0 && (
         <div className="blog-post__slider-container">
-          {/* FIX: If PostImage interface expects 'url', 
-              don't rename it to 'src' here. 
-          */}
           <ImageSlider 
             images={post.images} 
             editMode={false} 
